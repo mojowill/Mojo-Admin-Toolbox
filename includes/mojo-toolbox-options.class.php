@@ -45,8 +45,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 		    
 				delete_option('mojoToolbox_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
 				
-				$arr = array(	'social' => '1',
-								'avatar_title' => 'My Custom Avatar',
+				$arr = array(	'avatar_title' => 'My Custom Avatar',
 				);
 				
 				update_option('mojoToolbox_options', $arr);
@@ -120,7 +119,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 							<td>
 								<label><input name="mojoToolbox_options[remove_comments]" type="checkbox" value="1" <?php if (isset($this->options['remove_comments'])) { checked('1', $this->options['remove_comments']); } ?> /> <?php echo _e( 'Hide the comments system.', 'mojo-toolbox' );?></label><br />
 								<label><input name="mojoToolbox_options[remove_editor]" type="checkbox" value="1" <?php if (isset($this->options['remove_editor'])) { checked('1', $this->options['remove_editor']); } ?> /> <?php echo _e( 'Hide the theme editor screen.', 'mojo-toolbox' );?></label><br />
-								<label><input name="mojoToolbox_options[hide_wp]" type="checkbox" value="1" <?php if (isset($this->options['remove_wp'])) { checked('1', $this->options['remove_wp']); } ?> /> <?php echo _e( 'Hide the Wordpress Meta Generator tag.', 'mojo-toolbox' );?></label><br />
+								<label><input name="mojoToolbox_options[hide_wp]" type="checkbox" value="1" <?php if (isset($this->options['hide_wp'])) { checked('1', $this->options['hide_wp']); } ?> /> <?php echo _e( 'Hide the Wordpress Meta Generator tag.', 'mojo-toolbox' );?></label><br />
 							</td>
 						</tr>
 						
