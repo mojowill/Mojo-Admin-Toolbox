@@ -23,7 +23,7 @@ The Mojo Admin Toolbox is a collection of little functions I found myself using 
 * Change the Descriptions and link destination for your custom login logo.
 * Hide the Wordpress meta generator tag, make it a little more difficult for those script kiddies!
 
-** New Features **
+= New Features =
 * Modify From name and email address for all emails sent by your Wordpress site!
 
 == Installation ==
@@ -62,4 +62,4 @@ Check out the Other Notes section for more info.
 
 == Developer Notes ==
 
-If you would like to follow the development of the plugin or get involved please either drop by my [website](http://www.mojowill.com "Mojo Will") or the project [GitHub page](http://github.com/mojowill/Mojo-Gallery "GitHub").
+If you would like to follow the development of the plugin or get involved please either drop by my [website](http://www.mojowill.com "Mojo Will") or the project [GitHub page](https://github.com/mojowill/Mojo-Admin-Toolbox "GitHub").
