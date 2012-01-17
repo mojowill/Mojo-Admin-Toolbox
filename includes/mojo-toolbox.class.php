@@ -90,6 +90,16 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			if ( isset( $this->options['hide_wp'] ) && $this->options['hide_wp'] == 1 ) :
 				remove_action( 'wp_head', 'wp_generator' );
 			endif;
+			
+			/**
+			 * custom_email_address filter
+			 */
+			add_filter( 'wp_mail_from', array( &$this, 'custom_email_address' ) );
+			
+			/**
+			 * custom_email_from_name filter
+			 */
+			add_filter( 'wp_mail_from_name', array( &$this, 'custom_email_from_name' ) );
 			 
 		}
 		
@@ -234,6 +244,32 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			
 				return bloginfo( 'description' );
 			
+			endif;
+		}
+		
+		/**
+		 * custom_email_address function.
+		 * 
+		 * @access public
+		 * @param mixed $old
+		 * @return void
+		 */
+		function custom_email_address( $old ) {
+			if ( isset( $this->options['email_address'] ) && $this->options['email_address'] != '' ) :
+				return $this->options['email_address'];
+			endif;
+		}
+		
+		/**
+		 * custom_email_from_name function.
+		 * 
+		 * @access public
+		 * @param mixed $old
+		 * @return void
+		 */
+		function custom_email_from_name( $old ) {
+			if ( isset( $this->options['email_from'] ) && $this->options['email_from'] != '' ) :
+				return $this->options['email_from'];
 			endif;
 		}
 				

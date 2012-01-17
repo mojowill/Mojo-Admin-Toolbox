@@ -175,6 +175,20 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 						</tr>
 						
 						<tr>
+							<th scope="row"><?php echo _e( 'Custom Email From Name', 'mojo-toolbox' );?></th>
+							<td>
+								<label><input name="mojoToolbox_options[email_from]" type="text" value="<?php if ( isset( $this->options['email_from'] ) ) echo $this->options['email_from'];?>"/><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The name that all your site emails should come from', 'mojo-toolbox' );?></span></label>
+							</td>
+						</tr>
+
+						<tr>
+							<th scope="row"><?php echo _e( 'Custom Email Address', 'mojo-toolbox' );?></th>
+							<td>
+								<label><input name="mojoToolbox_options[email_address]" type="text" value="<?php if ( isset( $this->options['email_address'] ) ) echo $this->options['email_address'];?>"/><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The email address you want to send from for your site', 'mojo-toolbox' );?></span></label>
+							</td>
+						</tr>
+						
+						<tr>
 							<th scope="row"><?php echo _e( 'Dashboard Footer Text', 'mojo-toolbox' );?></th>
 							<td>
 								<textarea name="mojoToolbox_options[footer_text]" rows="7" cols="50"><?php if ( isset( $this->options['footer_text'] ) ) echo $this->options['footer_text'];?></textarea><br /><span style="color:#666666; margin-left: 2px;"><?php echo _e( 'Text to show in the dashboard footer area', 'mojo-toolbox' );?></span>
@@ -214,6 +228,8 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 			$input['avatar_image'] = esc_url( $input['avatar_image'] );
 			$input['avatar_title'] = wp_filter_nohtml_kses( $input['avatar_title'] );
 			$input['footer_text'] = wp_filter_kses( $input['footer_text'] );
+			$input['email_from'] = wp_filter_nohtml_kses( $input['email_from'] );
+			$input['email_address'] = is_email( $input['email_address'] );
 			return $input;
 		}
 				
