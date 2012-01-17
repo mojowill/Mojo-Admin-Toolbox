@@ -5,7 +5,7 @@
  * Removes all traces of Comments from Wordpress
  * 
  * @author Will Wilson <will@mojowill.com>
- * @version 1.0
+ * @version 1.1
  * @since 1.0
  */
 

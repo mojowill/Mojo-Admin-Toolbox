@@ -22,7 +22,9 @@ The Mojo Admin Toolbox is a collection of little functions I found myself using 
 * Easily change the Dashboard footer text for your own.
 * Change the Descriptions and link destination for your custom login logo.
 * Hide the Wordpress meta generator tag, make it a little more difficult for those script kiddies!
-* And more to come………..
+
+** New Features **
+* Modify From name and email address for all emails sent by your Wordpress site!
 
 == Installation ==
 
@@ -51,6 +53,9 @@ Check out the Other Notes section for more info.
 1. A simple to use options page.
 
 == Changelog ==
+
+= 1.1 =
+* Adding option to customise from name and email address for emails sent from your Wordpress install.
 
 = 1.0 =
 * First release

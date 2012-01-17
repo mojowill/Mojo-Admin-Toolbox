@@ -6,7 +6,7 @@
  *
  * @package MojoToolbox
  * @author Will Wilson <will@mojowill.com>
- * @version 1.0
+ * @version 1.1
  * @since 1.0
  */
  
@@ -15,7 +15,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 	/**
 	 * mojoToolbox class.
 	 *
-	 * @version 1.0
+	 * @version 1.1
 	 * @since 1.0
 	 */
 	class mojoToolbox {
@@ -28,6 +28,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * Actions, filters and includes!
 		 * @access public
 		 * @return void
+		 * @since 1.0
 		 */
 		function __construct() {
 		
@@ -108,6 +109,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * 
 		 * @access public
 		 * @return void
+		 * @since 1.0
 		 * @todo account for funny size images?
 		 */
 		function custom_login_logo() {
@@ -125,6 +127,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * 
 		 * @access public
 		 * @return void
+		 * @since 1.0
 		 * @todo account for funny size images.
 		 */
 		function custom_admin_logo() {
@@ -143,6 +146,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * @access public
 		 * @param mixed $avatar_defaults
 		 * @return void
+		 * @since 1.0
 		 */
 		function custom_default_avatar( $avatar_defaults ) {
 			if ( ( isset( $this->options['avatar_image'] ) ) && ( $this->options['avatar_image'] != '' ) && ( isset( $this->options['avatar_title'] ) ) && ( $this->options['avatar_title'] != '' ) ) :
@@ -164,6 +168,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * 
 		 * @access public
 		 * @return void
+		 * @since 1.0
 		 */
 		function remove_dashboard_widgets() {
 			global $wp_meta_boxes;
@@ -190,6 +195,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * 
 		 * @access public
 		 * @return void
+		 * @since 1.0
 		 */
 		function remove_editor_menu() {
 			if ( isset( $this->options['remove_editor'] ) && $this->options['remove_editor'] == 1 ) :
@@ -202,6 +208,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * 
 		 * @access public
 		 * @return void
+		 * @since 1.0
 		 */
 		function custom_admin_footer() {
 			if ( isset( $this->options['footer_text'] ) && $this->options['footer_text'] != '' ) :
@@ -215,6 +222,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * @access public
 		 * @param mixed $url
 		 * @return void
+		 * @since 1.0
 		 */
 		function custom_login_url( $url ) {
 			if ( isset( $this->options['login_url'] ) && $this->options['login_url'] != '' ) :
@@ -234,6 +242,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * @access public
 		 * @param mixed $title
 		 * @return void
+		 * @since 1.0
 		 */
 		function custom_login_description( $title ) {
 			if ( isset( $this->options['login_desc'] ) && $this->options['login_desc'] != '' ) :
@@ -253,6 +262,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * @access public
 		 * @param mixed $old
 		 * @return void
+		 * @since 1.1
 		 */
 		function custom_email_address( $old ) {
 			if ( isset( $this->options['email_address'] ) && $this->options['email_address'] != '' ) :
@@ -266,6 +276,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * @access public
 		 * @param mixed $old
 		 * @return void
+		 * @since 1.1
 		 */
 		function custom_email_from_name( $old ) {
 			if ( isset( $this->options['email_from'] ) && $this->options['email_from'] != '' ) :
