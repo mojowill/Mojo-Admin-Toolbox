@@ -6,7 +6,7 @@
  *
  * @package MojoToolbox
  * @author Will Wilson <will@mojowill.com>
- * @version 1.1
+ * @version 1.1.1
  * @since 1.0
  */
  
@@ -15,7 +15,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 	/**
 	 * mojoToolbox class.
 	 *
-	 * @version 1.1
+	 * @version 1.1.1
 	 * @since 1.0
 	 */
 	class mojoToolbox {
