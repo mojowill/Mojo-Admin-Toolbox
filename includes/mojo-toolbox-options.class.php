@@ -4,7 +4,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 	/**
 	 * mojoToolboxOptions class.
 	 *
-	 * @version 1.1.1
+	 * @version 1.2
 	 * @since 1.0
 	 * @todo add media upload support for images.
 	 * @extends mojoToolbox
@@ -202,13 +202,12 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 						<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="2"><h4><?php echo _e( 'Login Screen Options', 'mojo-toolbox' );?></h4></td></tr>
 						
 						<tr>	
-						<!-- Test field with Image Upload -->
 							<th scope="row"><?php echo _e( 'Custom Login Logo URL', 'mojo-toolbox' );?></th>
 							<td>
-								<label><input name="mojoToolbox_options[login_logo]" id="login_logo" type="text" value="<?php if ( isset( $this->options['login_logo'] ) ) echo $this->options['login_logo'];?>"/><input id="login_logo_button" type="button" value="<?php echo _e( 'Upload Image', 'mojo-toolbox' );?>" /><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom login page logo, (270px x 60px works well!)', 'mojo-toolbox' );?></span></label>
+								<label><input name="mojoToolbox_options[login_logo]" type="text" value="<?php if ( isset( $this->options['login_logo'] ) ) echo $this->options['login_logo'];?>"/><input class="upload_image_button" type="button" value="<?php echo _e( 'Upload Image', 'mojo-toolbox' );?>" /><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom login page logo, (270px x 60px works well!)', 'mojo-toolbox' );?></span></label>
 							</td>
 						</tr>
-						<!-- /end test field for image upload -->
+
 						<tr>
 							<th scope="row"><?php echo _e( 'Custom Login URL', 'mojo-toolbox' );?></th>
 							<td>
@@ -222,24 +221,14 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 								<label><input name="mojoToolbox_options[login_desc]" type="text" value="<?php if ( isset( $this->options['login_desc'] ) ) echo $this->options['login_desc'];?>"/><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The text to show as the page title and hover text on the login screen. (defaults to the Blog Description when activated)', 'mojo-toolbox' );?></span></label>
 							</td>
 						</tr>
-						
-						<tr><td colspan="2"><div style="margin-top:10px;"></div></td></tr>
-						<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="2"><h4><?php echo _e( 'Admin Screen Options', 'mojo-toolbox' );?></h4></td></tr>
-						
-						<tr>
-							<th scope="row"><?php echo _e( 'Custom Admin Logo URL', 'mojo-toolbox' );?></th>
-							<td>
-								<label><input name="mojoToolbox_options[admin_logo]" type="text" value="<?php if ( isset( $this->options['admin_logo'] ) ) echo $this->options['admin_logo'];?>"/><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom login page logo, (16px x 16px!)', 'mojo-toolbox' );?></span></label>
-							</td>
-						</tr>
-						
+												
 						<tr><td colspan="2"><div style="margin-top:10px;"></div></td></tr>
 						<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="2"><h4><?php echo _e( 'Avatar Options', 'mojo-toolbox' );?></h4></td></tr>
 							
 						<tr>
 							<th scope="row"><?php echo _e( 'Custom Avatar', 'mojo-toolbox' );?></th>
 							<td>
-								<label><input name="mojoToolbox_options[avatar_image]" type="text" value="<?php if ( isset( $this->options['avatar_image'] ) ) echo $this->options['avatar_image'];?>"/><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom avatar, (70px x 70px!)', 'mojo-toolbox' );?></span></label>
+								<label><input name="mojoToolbox_options[avatar_image]" type="text" value="<?php if ( isset( $this->options['avatar_image'] ) ) echo $this->options['avatar_image'];?>"/><input class="upload_image_button" type="button" value="<?php echo _e( 'Upload Image', 'mojo-toolbox' );?>" /><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom avatar, (70px x 70px!)', 'mojo-toolbox' );?></span></label>
 							</td>
 						</tr>
 						
@@ -309,7 +298,6 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 		function validate_options( $input ) {
 			$input['login_logo'] = esc_url( $input['login_logo'] );
 			$input['login_url'] = esc_url( $input['login_url'] );
-			$input['admin_logo'] = esc_url( $input['admin_logo'] );
 			$input['avatar_image'] = esc_url( $input['avatar_image'] );
 			$input['avatar_title'] = wp_filter_nohtml_kses( $input['avatar_title'] );
 			$input['footer_text'] = wp_filter_kses( $input['footer_text'] );
