@@ -7,6 +7,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 	 * @version 1.1.1
 	 * @since 1.0
 	 * @todo add media upload support for images.
+	 * @extends mojoToolbox
 	 */
 	class mojoToolboxOptions {
 		
@@ -120,8 +121,6 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 		function admin_styles() {
 			wp_enqueue_style( 'thickbox' );
 			
-			wp_register_style( 'mojo-toolbox-css', MOJO_BASE_URL . 'css/admin.css', null, '1.0', 'screen' );
-			wp_enqueue_style( 'mojo-toolbox-css' );
 		}
 				
 		/**
