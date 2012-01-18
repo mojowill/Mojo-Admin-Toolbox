@@ -30,6 +30,11 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 			
 			add_action( 'admin_init', array( &$this, 'options_init' ) );
 			add_action( 'admin_menu', array( &$this, 'add_options_page' ) );
+			
+			if ( isset( $_GET['page']) && $_GET['page'] == 'mojoToolbox-options' ) :
+				add_action( 'admin_print_scripts', array( &$this, 'admin_scripts' ) );
+				add_action( 'admin_print_styles', array( &$this, 'admin_styles' ) );
+			endif;
 		}
 		
 		/**
@@ -89,6 +94,34 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 		}
 		
 		/**
+		 * admin_scripts function.
+		 * 
+		 * Adds required JS to the admin page for our thickbox uploader
+		 * @access public
+		 * @return void
+		 * @since 1.2
+		 */
+		function admin_scripts() {
+			wp_enqueue_script( 'media-upload' );
+			wp_enqueue_script( 'thickbox' );
+			wp_register_script( 'mojo-toolbox', MOJO_BASE_URL . 'js/mojo-toolbox.js', array( 'jquery', 'media-upload', 'thickbox' ) );
+			
+			wp_enqueue_script( 'mojo-toolbox' );
+		}
+		
+		/**
+		 * admin_styles function.
+		 * 
+		 * Adds the css for the thickbox
+		 * @access public
+		 * @return void
+		 * @since 1.2
+		 */
+		function admin_styles() {
+			wp_enqueue_style( 'thickbox' );
+		}
+		
+		/**
 		 * render_form function.
 		 * 
 		 * @access public
@@ -135,7 +168,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 						<tr>
 							<th scope="row"><?php echo _e( 'Custom Login Logo URL', 'mojo-toolbox' );?></th>
 							<td>
-								<label><input name="mojoToolbox_options[login_logo]" type="text" value="<?php if ( isset( $this->options['login_logo'] ) ) echo $this->options['login_logo'];?>"/><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom login page logo, (270px x 60px works well!)', 'mojo-toolbox' );?></span></label>
+								<label><input name="mojoToolbox_options[login_logo]" id="login_logo" type="text" value="<?php if ( isset( $this->options['login_logo'] ) ) echo $this->options['login_logo'];?>"/><input id="login_logo_button" type="button" value="<?php echo _e( 'Upload Image', 'mojo-toolbox' );?>" /><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom login page logo, (270px x 60px works well!)', 'mojo-toolbox' );?></span></label>
 							</td>
 						</tr>
 						
