@@ -44,15 +44,17 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 		 * @access public
 		 * @return void
 		 * @since 1.0
+		 * @todo this isn't working?????
 		 */
 		function add_defaults() {
 			$tmp = get_option('mojoToolbox_options');
-		    if ( ( $tmp['chk_default_options_db'] == '1' ) || ( ! is_array( $tmp ) ) ) :
+		    if ( ( $tmp['chk_default_options_db'] == 1 ) || ( ! is_array( $tmp ) ) ) :
 		    
-				delete_option('mojoToolbox_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
+				delete_option( 'mojoToolbox_options' ); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
 				
-				$arr = array(	'avatar_title' => 'My Custom Avatar',
-				);
+				$arr = array(	
+							'avatar_title' => 'My Custom Avatar',
+						);
 				
 				update_option('mojoToolbox_options', $arr);
 			
@@ -68,7 +70,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 		 * @return void
 		 * @since 1.0
 		 */
-		public static function delete_plugin_options() {
+		static function delete_plugin_options() {
 			delete_option( 'mojoToolbox_options' );
 		}
 		
@@ -149,6 +151,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 					
 					<!-- Donate link -->
 					<div id="message" class="updated">
+						<h3><?php echo _e( 'Share the Love!', 'mojo-toolbox' );?></h3>
 						<p><?php echo _e( 'If you love this plugin please share it and donate! I do this for free to help if you want to buy me a beer to say thanks then I would appreciate it! (You can remove this message by ticking the box below)', 'mojo-toolbox' );?></p>
 						
 						<!-- Paypal Donation Button -->
@@ -164,7 +167,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 				<?php endif; ?>
 				
 				<!-- Description -->
-				<p><?php echo _e( 'The Mojo Admin Toolbox allows you to disable or hide a number of things from your Wordpress site, it also allows you to modify a few things that you can\'t do "out of the box". These are all things that I have had to do for clients over the past year or so so wanted to bundle them all up into an easy to use plugin for other developers/site owners.', 'mojo-toolbox' );?></p>
+				<p><?php echo _e( 'The Mojo Admin Toolbox allows you to disable or hide a number of things from your Wordpress site, it also allows you to modify a few things that you can\'t do "out of the box". These are all things that I have had to do for clients over the past year or so so wanted to bundle them all up into an easy to use plugin for other developers/site owners. You can get more info at my site <a href="http://www.mojowill.com">here.</a>', 'mojo-toolbox' );?></p>
 				
 				
 				<!-- Beginning of the Plugin Options Form -->
