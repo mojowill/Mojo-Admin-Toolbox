@@ -6,7 +6,7 @@
  *
  * @package MojoToolbox
  * @author Will Wilson <will@mojowill.com>
- * @version 1.1.1
+ * @version 1.2
  * @since 1.0
  */
  
@@ -15,7 +15,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 	/**
 	 * mojoToolbox class.
 	 *
-	 * @version 1.1.1
+	 * @version 1.2
 	 * @since 1.0
 	 */
 	class mojoToolbox {
@@ -49,11 +49,6 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			 * custom_login_logo action
 			 */
 			add_action( 'admin_head', array( &$this, 'custom_login_logo' ) );
-			
-			/**
-			 * custom_login_logo action
-			 */
-			add_action( 'admin_head', array( &$this, 'custom_admin_logo' ) );
 			
 			/**
 			 * custom_default_avatar filter
@@ -111,35 +106,19 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * @return void
 		 * @since 1.0
 		 * @todo account for funny size images?
+		 * @this isn't quite working!
 		 */
 		function custom_login_logo() {
-			if ( isset( $this->options['login_logo'] ) && ( $this->options['login_logo'] != '' ) ) : ?>
+			if ( isset( $this->options['login_logo'] ) && ( $this->options['login_logo'] != '' ) ) :
+				$img = $this->options['login_logo'];
 				
-				<style type="text/css">
-						h1 a { background-image: url('<?php echo $this->options['login_logo'];?> ') !important; }
-				</style>
+				echo ' <style type="text/css">
+						h1 a { background-image: url(' . $img . ') !important; }
+				</style>';
 				
-			<?php endif;		
+			endif;		
 		}
-		
-		/**
-		 * custom_admin_logo function.
-		 * 
-		 * @access public
-		 * @return void
-		 * @since 1.0
-		 * @todo account for funny size images.
-		 */
-		function custom_admin_logo() {
-			if ( isset( $this->options['admin_logo'] ) && ( $this->options['admin_logo'] != '' ) ) : ?>
 				
-				<style type="text/css">
-					#header-logo { background-image: url('<?php echo $this->options['admin_logo'];?> ') !important; }
-				</style>
-			
-			<?php endif;
-		}
-		
 		/**
 		 * custom_default_avatar function.
 		 * 
@@ -149,7 +128,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		 * @since 1.0
 		 */
 		function custom_default_avatar( $avatar_defaults ) {
-			if ( ( isset( $this->options['avatar_image'] ) ) && ( $this->options['avatar_image'] != '' ) && ( isset( $this->options['avatar_title'] ) ) && ( $this->options['avatar_title'] != '' ) ) :
+			if ( ( ( isset( $this->options['avatar_image'] ) ) && ( $this->options['avatar_image'] != '' ) ) && ( ( isset( $this->options['avatar_title'] ) ) && ( $this->options['avatar_title'] != '' ) ) ) :
 			
 				$mojo_avatar = $this->options['avatar_image'];
 				$avatar_defaults[ $mojo_avatar ] = $this->options['avatar_title'];

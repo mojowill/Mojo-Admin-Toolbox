@@ -15,7 +15,6 @@ The Mojo Admin Toolbox is a collection of little functions I found myself using 
 = Features =
 * Remove/Hide the Wordpress Comments system, never confuse your client again!
 * Easily customise the Login Page Logo.
-* Easily customise the Dashboard Logo.
 * Set a New custom default avatar for your site.
 * Remove dashboard widgets for ALL users.
 * Hide the theme editor page and stop clients messing up the theme!
@@ -25,6 +24,7 @@ The Mojo Admin Toolbox is a collection of little functions I found myself using 
 
 = New Features =
 * Modify From name and email address for all emails sent by your Wordpress site!
+* Image uploader now in use on the options page!
 
 == Installation ==
 
@@ -53,6 +53,10 @@ Check out the Other Notes section for more info.
 1. A simple to use options page.
 
 == Changelog ==
+
+= 1.2 =
+* Adding Image upload ability to options page.
+* THERE IS A SMALL BUG WITH THE LOGIN SCREEN LOGO CUSTOMISATION, A FIX WILL BE PUSHED ASAP!
 
 = 1.1 =
 * Adding option to customise from name and email address for emails sent from your Wordpress install.
