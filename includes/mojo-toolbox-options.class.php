@@ -119,8 +119,11 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 		 */
 		function admin_styles() {
 			wp_enqueue_style( 'thickbox' );
+			
+			wp_register_style( 'mojo-toolbox-css', MOJO_BASE_URL . 'css/admin.css', null, '1.0', 'screen' );
+			wp_enqueue_style( 'mojo-toolbox-css' );
 		}
-		
+				
 		/**
 		 * render_form function.
 		 * 
@@ -135,8 +138,36 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 				
 				<!-- Display Plugin Icon, Header, and Description -->
 				<div class="icon32" id="icon-tools"><br /></div>
+				
 				<h2><?php echo _e( 'Mojo Toolbox Options', 'mojo-toolbox' );?></h2>
-		
+				
+				<?php 
+				if ( isset( $this->options['donated'] ) && ( $this->options['donated'] == 1 ) ) :
+					
+					//If they have checked the donated box we show nothing. A kitten dies if they are lying!
+					
+					else : ?>
+					
+					<!-- Donate link -->
+					<div id="message" class="updated">
+						<p><?php echo _e( 'If you love this plugin please share it and donate! I do this for free to help if you want to buy me a beer to say thanks then I would appreciate it! (You can remove this message by ticking the box below)', 'mojo-toolbox' );?></p>
+						
+						<!-- Paypal Donation Button -->
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="XTURVBAXYYAEL">
+							<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+						</form>
+	
+					</div>
+				
+				<?php endif; ?>
+				
+				<!-- Description -->
+				<p><?php echo _e( 'The Mojo Admin Toolbox allows you to disable or hide a number of things from your Wordpress site, it also allows you to modify a few things that you can\'t do "out of the box". These are all things that I have had to do for clients over the past year or so so wanted to bundle them all up into an easy to use plugin for other developers/site owners.', 'mojo-toolbox' );?></p>
+				
+				
 				<!-- Beginning of the Plugin Options Form -->
 				<form method="post" action="options.php">
 					<?php settings_fields('mojoToolbox_plugin_options'); ?>
@@ -165,17 +196,21 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 							</td>
 						</tr>
 
-						<tr>
+						<tr><td colspan="2"><div style="margin-top:10px;"></div></td></tr>
+						<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="2"><h4><?php echo _e( 'Login Screen Options', 'mojo-toolbox' );?></h4></td></tr>
+						
+						<tr>	
+						<!-- Test field with Image Upload -->
 							<th scope="row"><?php echo _e( 'Custom Login Logo URL', 'mojo-toolbox' );?></th>
 							<td>
 								<label><input name="mojoToolbox_options[login_logo]" id="login_logo" type="text" value="<?php if ( isset( $this->options['login_logo'] ) ) echo $this->options['login_logo'];?>"/><input id="login_logo_button" type="button" value="<?php echo _e( 'Upload Image', 'mojo-toolbox' );?>" /><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom login page logo, (270px x 60px works well!)', 'mojo-toolbox' );?></span></label>
 							</td>
 						</tr>
-						
+						<!-- /end test field for image upload -->
 						<tr>
 							<th scope="row"><?php echo _e( 'Custom Login URL', 'mojo-toolbox' );?></th>
 							<td>
-								<label><input name="mojoToolbox_options[login_url]" type="text" value="<?php if ( isset( $this->options['login_url'] ) ) echo $this->options['login_url'];?>"/><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL to goto when clicking on the login screen logo. (defaults to the site url when activated, instead of wordpress.org)', 'mojo-toolbox' );?></span></label>
+								<label><input name="mojoToolbox_options[login_url]" type="text" value="<?php if ( isset( $this->options['login_url'] ) ) echo $this->options['login_url'];?>"/><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL to goto when clicking on the login screen logo. (defaults to the site url when plugin is activated, instead of wordpress.org)', 'mojo-toolbox' );?></span></label>
 							</td>
 						</tr>
 						
@@ -186,6 +221,9 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 							</td>
 						</tr>
 						
+						<tr><td colspan="2"><div style="margin-top:10px;"></div></td></tr>
+						<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="2"><h4><?php echo _e( 'Admin Screen Options', 'mojo-toolbox' );?></h4></td></tr>
+						
 						<tr>
 							<th scope="row"><?php echo _e( 'Custom Admin Logo URL', 'mojo-toolbox' );?></th>
 							<td>
@@ -193,6 +231,9 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 							</td>
 						</tr>
 						
+						<tr><td colspan="2"><div style="margin-top:10px;"></div></td></tr>
+						<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="2"><h4><?php echo _e( 'Avatar Options', 'mojo-toolbox' );?></h4></td></tr>
+							
 						<tr>
 							<th scope="row"><?php echo _e( 'Custom Avatar', 'mojo-toolbox' );?></th>
 							<td>
@@ -207,6 +248,9 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 							</td>
 						</tr>
 						
+						<tr><td colspan="2"><div style="margin-top:10px;"></div></td></tr>
+						<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="2"><h4><?php echo _e( 'Email Options', 'mojo-toolbox' );?></h4></td></tr>
+						
 						<tr>
 							<th scope="row"><?php echo _e( 'Custom Email From Name', 'mojo-toolbox' );?></th>
 							<td>
@@ -220,20 +264,26 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 								<label><input name="mojoToolbox_options[email_address]" type="text" value="<?php if ( isset( $this->options['email_address'] ) ) echo $this->options['email_address'];?>"/><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The email address you want to send from for your site', 'mojo-toolbox' );?></span></label>
 							</td>
 						</tr>
-						
+			
+						<tr><td colspan="2"><div style="margin-top:10px;"></div></td></tr>
+						<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="2"><h4><?php echo _e( 'Footer Options', 'mojo-toolbox' );?></h4></td></tr>
+
 						<tr>
 							<th scope="row"><?php echo _e( 'Dashboard Footer Text', 'mojo-toolbox' );?></th>
 							<td>
 								<textarea name="mojoToolbox_options[footer_text]" rows="7" cols="50"><?php if ( isset( $this->options['footer_text'] ) ) echo $this->options['footer_text'];?></textarea><br /><span style="color:#666666; margin-left: 2px;"><?php echo _e( 'Text to show in the dashboard footer area', 'mojo-toolbox' );?></span>
 							</td>
 						</tr>
-		
+
 						<tr><td colspan="2"><div style="margin-top:10px;"></div></td></tr>
-						<tr valign="top" style="border-top:#dddddd 1px solid;">
-							<th scope="row"><?php echo _e( 'Database Options', 'mojo-toolbox');?></th>
+						<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="2"><h4><?php echo _e( 'General Options', 'mojo-toolbox' );?></h4></td></tr>
+
+						<tr>
+							<th scope="row"><?php echo _e( 'Other Options', 'mojo-toolbox');?></th>
 							<td>
-								<label><input name="mojoToolbox_options[chk_default_options_db]" type="checkbox" value="1" <?php if ( isset( $this->options['chk_default_options_db'] ) ) { checked( '1', $this->options['chk_default_options_db']); } ?> /> <?php echo _e( 'Restore defaults upon plugin deactivation/reactivation', 'mojo-toolbox' );?></label>
-								<br /><span style="color:red;margin-left:2px;"><?php echo _e( 'Only check this if you want to reset plugin settings upon Plugin reactivation', 'mojo-toolbox' );?></span>
+								<label><input name="mojoToolbox_options[chk_default_options_db]" type="checkbox" value="1" <?php if ( isset( $this->options['chk_default_options_db'] ) ) { checked( '1', $this->options['chk_default_options_db'] ); } ?> /> <?php echo _e( 'Restore defaults upon plugin deactivation/reactivation', 'mojo-toolbox' );?></label><span style="color:red;margin-left:2px;"><?php echo _e( 'Only check this if you want to reset plugin settings upon Plugin reactivation', 'mojo-toolbox' );?></span><br />
+								<label><input name="mojoToolbox_options[donated]" type="checkbox" value="1" <?php if ( isset( $this->options['donated'] ) ) { checked( '1', $this->options['donated'] ); } ?> /><?php echo _e( 'I\'ve donated please hide the box at the top of this page.', 'mojo-gallery' );?></label>
+								<br /><span style="color:red;margin-left:2px;"><?php echo _e( 'If you check this box and haven\'t donated you are essentially killing a kitten, you don\'t want to kill a kitten do you?', 'mojo-toolbox' );?></span>
 							</td>
 						</tr>
 					</table>
