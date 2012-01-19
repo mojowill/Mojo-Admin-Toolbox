@@ -3,7 +3,7 @@
 Plugin Name: The Mojo Admin Toolbox
 Plugin URI: http://www.mojowill.com/developer/the-mojo-admin-toolbox/
 Description: A small toolbox of functions for customising the admin dashboard, useful for hiding stuff from clients!
-Version: 1.2
+Version: 1.2.1
 Author: mojowill
 Author URI: http://www.mojowill.com
 License: GPLv2 or later

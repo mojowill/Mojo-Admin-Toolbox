@@ -6,7 +6,7 @@
  *
  * @package MojoToolbox
  * @author Will Wilson <will@mojowill.com>
- * @version 1.2
+ * @version 1.2.1
  * @since 1.0
  */
  
@@ -15,7 +15,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 	/**
 	 * mojoToolbox class.
 	 *
-	 * @version 1.2
+	 * @version 1.2.1
 	 * @since 1.0
 	 */
 	class mojoToolbox {
@@ -48,7 +48,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			/**
 			 * custom_login_logo action
 			 */
-			add_action( 'admin_head', array( &$this, 'custom_login_logo' ) );
+			add_action( 'login_head', array( &$this, 'custom_login_logo' ) );
 			
 			/**
 			 * custom_default_avatar filter
