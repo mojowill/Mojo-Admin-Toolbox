@@ -54,9 +54,11 @@ Check out the Other Notes section for more info.
 
 == Changelog ==
 
+= 1.2.1 =
+* Fixed bug with Login screen logo not working (using wrong hook)
+
 = 1.2 =
 * Adding Image upload ability to options page.
-* THERE IS A SMALL BUG WITH THE LOGIN SCREEN LOGO CUSTOMISATION, A FIX WILL BE PUSHED ASAP!
 
 = 1.1 =
 * Adding option to customise from name and email address for emails sent from your Wordpress install.
