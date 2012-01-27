@@ -54,6 +54,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 				
 				$arr = array(	
 							'avatar_title' => 'My Custom Avatar',
+							'override_theme' => 1,
 						);
 				
 				update_option('mojoToolbox_options', $arr);
@@ -185,6 +186,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 								<label><input name="mojoToolbox_options[remove_comments]" type="checkbox" value="1" <?php if ( isset( $this->options['remove_comments'] ) ) { checked( '1', $this->options['remove_comments'] ); } ?> /> <?php echo _e( 'Hide the comments system.', 'mojo-toolbox' );?></label><br />
 								<label><input name="mojoToolbox_options[remove_editor]" type="checkbox" value="1" <?php if ( isset( $this->options['remove_editor'] ) ) { checked( '1', $this->options['remove_editor'] ); } ?> /> <?php echo _e( 'Hide the theme editor screen.', 'mojo-toolbox' );?></label><br />
 								<label><input name="mojoToolbox_options[hide_wp]" type="checkbox" value="1" <?php if ( isset( $this->options['hide_wp'] ) ) { checked( '1', $this->options['hide_wp'] ); } ?> /> <?php echo _e( 'Hide the Wordpress Meta Generator tag.', 'mojo-toolbox' );?></label><br />
+								<label><input name="mojoToolbox_options[override_theme]" type="checkbox" value="1" <?php if ( isset( $this->options['override_theme'] ) ) { checked( '1', $this->options['override_theme'] ); } ?> /><span style="color:red;margin-left:2px;"><?php echo _e( 'Override theme, this will make sure what you set in here overrides any similar functions or filters in your theme.', 'mojo-toolbox' );?></span></label><br />
 							</td>
 						</tr>
 						
