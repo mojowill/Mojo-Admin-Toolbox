@@ -4,7 +4,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 	/**
 	 * mojoToolboxOptions class.
 	 *
-	 * @version 1.2.1
+	 * @version 1.2.2
 	 * @since 1.0
 	 * @todo add media upload support for images.
 	 * @extends mojoToolbox

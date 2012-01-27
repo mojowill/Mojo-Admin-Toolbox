@@ -25,6 +25,7 @@ The Mojo Admin Toolbox is a collection of little functions I found myself using 
 = New Features =
 * Modify From name and email address for all emails sent by your Wordpress site!
 * Image uploader now in use on the options page!
+* Added option to override theme, useful if your theme is trying to do the same thing as this plugin is!
 
 == Installation ==
 
@@ -54,6 +55,8 @@ Check out the Other Notes section for more info.
 
 == Changelog ==
 
+= 1.2.2 =
+* Added option override themes.
 = 1.2.1 =
 * Fixed bug with Login screen logo not working (using wrong hook)
 

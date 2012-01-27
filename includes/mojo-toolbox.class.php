@@ -15,7 +15,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 	/**
 	 * mojoToolbox class.
 	 *
-	 * @version 1.2.1
+	 * @version 1.2.2
 	 * @since 1.0
 	 */
 	class mojoToolbox {
