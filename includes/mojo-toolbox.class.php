@@ -46,19 +46,28 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			endif;
 			
 			/**
+			 * Set priority
+			 */
+			if ( isset( $options['theme_override'] ) && $options['theme_override'] == 1 ) :
+				$priority = 5;
+			else :
+				$priority = 10;
+			endif;
+			
+			/**
 			 * custom_login_logo action
 			 */
-			add_action( 'login_head', array( &$this, 'custom_login_logo' ) );
+			add_action( 'login_head', array( &$this, 'custom_login_logo' ), $priority );
 			
 			/**
 			 * custom_default_avatar filter
 			 */
-			add_filter( 'avatar_defaults', array( &$this, 'custom_default_avatar' ) );
+			add_filter( 'avatar_defaults', array( &$this, 'custom_default_avatar' ), $priority );
 			
 			/**
 			 * remove_dashboard_widgets action
 			 */
-			add_action( 'wp_dashboard_setup', array( &$this, 'remove_dashboard_widgets' ) );
+			add_action( 'wp_dashboard_setup', array( &$this, 'remove_dashboard_widgets' ), $priority );
 			
 			/**
 			 * remove_editor_menu action
@@ -68,17 +77,17 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			/**
 			 * custom_admin_footer filter
 			 */
-			add_filter( 'admin_footer_text', array( &$this, 'custom_admin_footer' ) );
+			add_filter( 'admin_footer_text', array( &$this, 'custom_admin_footer' ), $priority );
 			
 			/**
 			 * custom_login_url filter
 			 */
-			add_filter( 'login_headerurl', array( &$this, 'custom_login_url' ) );
+			add_filter( 'login_headerurl', array( &$this, 'custom_login_url' ), $priority );
 			
 			/**
 			 * custom_login_description filter
 			 */
-			add_filter( 'login_headertitle', array( &$this, 'custom_login_description' ) );
+			add_filter( 'login_headertitle', array( &$this, 'custom_login_description' ), $priority );
 			
 			/**
 			 * Hide Wordpress Generator Tag
@@ -90,12 +99,12 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			/**
 			 * custom_email_address filter
 			 */
-			add_filter( 'wp_mail_from', array( &$this, 'custom_email_address' ) );
+			add_filter( 'wp_mail_from', array( &$this, 'custom_email_address' ), $priority );
 			
 			/**
 			 * custom_email_from_name filter
 			 */
-			add_filter( 'wp_mail_from_name', array( &$this, 'custom_email_from_name' ) );
+			add_filter( 'wp_mail_from_name', array( &$this, 'custom_email_from_name' ), $priority );
 			 
 		}
 		
