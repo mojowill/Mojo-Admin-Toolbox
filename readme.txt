@@ -27,6 +27,11 @@ The Mojo Admin Toolbox is a collection of little functions I found myself using 
 * Image uploader now in use on the options page!
 * Added option to override theme, useful if your theme is trying to do the same thing as this plugin is!
 
+= Future Development Plan =
+* Option to set 'superadmin' who can see everything
+* Option to hide other Wordpress features (Links, Tools, Plugins etc)
+* Option to hide Update notices from non-superadmins
+
 == Installation ==
 
 Installation is simple, just like every other Wordpress plugin. 
@@ -55,8 +60,14 @@ Check out the Other Notes section for more info.
 
 == Changelog ==
 
+= 1.2.3 =
+* Fixed the option to override themes.
+* Added default text to admin footer.
+* Fixed hide comments not working.
+
 = 1.2.2 =
 * Added option override themes.
+
 = 1.2.1 =
 * Fixed bug with Login screen logo not working (using wrong hook)
 
