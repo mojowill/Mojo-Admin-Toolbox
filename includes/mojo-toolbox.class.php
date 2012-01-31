@@ -6,7 +6,7 @@
  *
  * @package MojoToolbox
  * @author Will Wilson <will@mojowill.com>
- * @version 1.2.1
+ * @version 1.2.3
  * @since 1.0
  */
  
@@ -15,12 +15,13 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 	/**
 	 * mojoToolbox class.
 	 *
-	 * @version 1.2.2
+	 * @version 1.2.3
 	 * @since 1.0
 	 */
 	class mojoToolbox {
 		
 		private $options;
+		private $priority;
 			
 		/**
 		 * __construct function.
@@ -39,8 +40,8 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			/**
 			 * Remove Comments if activated
 			 */
-			if ( isset( $options['remove_comments'] ) ) :
-				if ( $options['remove_comments'] == 1 ) :
+			if ( isset( $this->options['remove_comments'] ) ) :
+				if ( $this->options['remove_comments'] == 1 ) :
 					include ( MOJO_BASE_PATH . '/includes/remove-comments.class.php' );
 				endif;
 			endif;
@@ -48,26 +49,26 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			/**
 			 * Set priority
 			 */
-			if ( isset( $options['theme_override'] ) && $options['theme_override'] == 1 ) :
-				$priority = 5;
+			if ( isset( $this->options['override_theme'] ) && $this->options['override_theme'] == 1 ) :
+				$this->priority = 15;
 			else :
-				$priority = 10;
+				$this->priority = 10;
 			endif;
 			
 			/**
 			 * custom_login_logo action
 			 */
-			add_action( 'login_head', array( &$this, 'custom_login_logo' ), $priority );
+			add_action( 'login_head', array( &$this, 'custom_login_logo' ), $this->priority );
 			
 			/**
 			 * custom_default_avatar filter
 			 */
-			add_filter( 'avatar_defaults', array( &$this, 'custom_default_avatar' ), $priority );
+			add_filter( 'avatar_defaults', array( &$this, 'custom_default_avatar' ), $this->priority );
 			
 			/**
 			 * remove_dashboard_widgets action
 			 */
-			add_action( 'wp_dashboard_setup', array( &$this, 'remove_dashboard_widgets' ), $priority );
+			add_action( 'wp_dashboard_setup', array( &$this, 'remove_dashboard_widgets' ), $this->priority );
 			
 			/**
 			 * remove_editor_menu action
@@ -77,17 +78,17 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			/**
 			 * custom_admin_footer filter
 			 */
-			add_filter( 'admin_footer_text', array( &$this, 'custom_admin_footer' ), $priority );
+			add_filter( 'admin_footer_text', array( &$this, 'custom_admin_footer' ), $this->priority );
 			
 			/**
 			 * custom_login_url filter
 			 */
-			add_filter( 'login_headerurl', array( &$this, 'custom_login_url' ), $priority );
+			add_filter( 'login_headerurl', array( &$this, 'custom_login_url' ), $this->priority );
 			
 			/**
 			 * custom_login_description filter
 			 */
-			add_filter( 'login_headertitle', array( &$this, 'custom_login_description' ), $priority );
+			add_filter( 'login_headertitle', array( &$this, 'custom_login_description' ), $this->priority );
 			
 			/**
 			 * Hide Wordpress Generator Tag
@@ -99,12 +100,12 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			/**
 			 * custom_email_address filter
 			 */
-			add_filter( 'wp_mail_from', array( &$this, 'custom_email_address' ), $priority );
+			add_filter( 'wp_mail_from', array( &$this, 'custom_email_address' ), $this->priority );
 			
 			/**
 			 * custom_email_from_name filter
 			 */
-			add_filter( 'wp_mail_from_name', array( &$this, 'custom_email_from_name' ), $priority );
+			add_filter( 'wp_mail_from_name', array( &$this, 'custom_email_from_name' ), $this->priority );
 			 
 		}
 		
@@ -201,6 +202,8 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		function custom_admin_footer() {
 			if ( isset( $this->options['footer_text'] ) && $this->options['footer_text'] != '' ) :
 				echo $this->options['footer_text'];
+			else :
+				echo __( 'You can edit this footer message in the Mojo Admin Toolbox Options', 'mojo-toolbox' );
 			endif;
 		}
 		
