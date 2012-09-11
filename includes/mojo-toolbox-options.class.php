@@ -4,7 +4,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 	/**
 	 * mojoToolboxOptions class.
 	 *
-	 * @version 1.2.3
+	 * @version 1.2.4
 	 * @since 1.0
 	 * @todo add media upload support for images.
 	 * @extends mojoToolbox
@@ -302,7 +302,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 			$input['login_url'] = esc_url( $input['login_url'] );
 			$input['avatar_image'] = esc_url( $input['avatar_image'] );
 			$input['avatar_title'] = wp_filter_nohtml_kses( $input['avatar_title'] );
-			$input['footer_text'] = wp_filter_kses( $input['footer_text'] );
+			$input['footer_text'] = wp_kses( $input['footer_text'],array('a' => array('href' => array(),'title' => array()),'br' => array(),'em' => array(),'strong' => array()) );
 			$input['email_from'] = wp_filter_nohtml_kses( $input['email_from'] );
 			$input['email_address'] = is_email( $input['email_address'] );
 			return $input;

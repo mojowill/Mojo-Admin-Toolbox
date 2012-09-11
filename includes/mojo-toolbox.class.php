@@ -222,7 +222,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		
 			else :
 		
-				return home_url();
+				return get_home_url();
 		
 			endif;
 		}
@@ -242,7 +242,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			
 			else :
 			
-				return bloginfo( 'description' );
+				return get_bloginfo( 'description' );
 			
 			endif;
 		}
