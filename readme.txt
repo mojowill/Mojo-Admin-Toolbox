@@ -60,6 +60,10 @@ Check out the Other Notes section for more info.
 
 == Changelog ==
 
+=1.2.4 =
+* Long overdue fix for Login Screen after WordPress 3.4
+* Fixing text validation of footer text to allow links.
+
 = 1.2.3 =
 * Fixed the option to override themes.
 * Added default text to admin footer.
