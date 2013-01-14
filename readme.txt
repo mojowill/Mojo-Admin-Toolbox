@@ -24,7 +24,7 @@ The Mojo Admin Toolbox is a collection of little functions I found myself using 
 
 = New Features =
 * Modify From name and email address for all emails sent by your Wordpress site!
-* Image uploader now in use on the options page!
+* Image uploader now in use on the options page (Now using the WordPress 3.5 Media Manager)!
 * Added option to override theme, useful if your theme is trying to do the same thing as this plugin is!
 
 = Future Development Plan =
