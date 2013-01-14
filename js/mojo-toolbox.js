@@ -1,27 +1,47 @@
-jQuery(document).ready(function() {
+/**
+ * Thanks to Thomas Griffin for his super useful example on Github
+ *
+ * https://github.com/thomasgriffin/New-Media-Image-Uploader
+ */
+jQuery(document).ready(function($){
+    // Prepare the variable that holds our custom media manager.
+    var mojo_media_frame;
+    var formlabel = 0;
+    
+    // Bind to our click event in order to open up the new media experience.
+    $(document.body).on('click.mojoOpenMediaManager', '.mojo-open-media', function(e){
+        // Prevent the default action from occuring.
+        e.preventDefault();
+        formlabel = jQuery(this).parent();
+        // If the frame already exists, re-open it.
+        if ( mojo_media_frame ) {
+            mojo_media_frame.open();
+            return;
+        }
 
-  var formlabel = 0;
-  var old_send_to_editor = window.send_to_editor;
-  var old_tb_remove = window.tb_remove;
 
-  jQuery('.upload_image_button').click(function(){
-    formlabel = jQuery(this).parent();
-    tb_show('', 'media-upload.php?type=image&TB_iframe=true');
-    return false;
-  });
+        mojo_media_frame = wp.media.frames.mojo_media_frame = wp.media({
 
-  window.tb_remove = function() {
-    formlabel = 0;
-    old_tb_remove();
-  }
+            className: 'media-frame mojo-media-frame',
+            frame: 'select',
+            multiple: false,
+            library: {
+                type: 'image'
+            },
+        });
 
-  window.send_to_editor = function(html) {
-    if(formlabel){
-      imgurl = jQuery('img',html).attr('src');
-      formlabel.find('input[type="text"]').val(imgurl);
-      tb_remove();
-    } else {
-      old_send_to_editor();
-    }
-  }
+
+        mojo_media_frame.on('select', function(){
+            // Grab our attachment selection and construct a JSON representation of the model.
+            var media_attachment = mojo_media_frame.state().get('selection').first().toJSON();
+
+            // Send the attachment URL to our custom input field via jQuery.
+            
+            formlabel.find('input[type="text"]').val(media_attachment.url);
+            //$('#mojo-new-media-image').val(media_attachment.url);
+        });
+
+        // Now that everything has been set, let's open up the frame.
+        mojo_media_frame.open();
+    });
 });

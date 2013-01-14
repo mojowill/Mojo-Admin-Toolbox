@@ -6,7 +6,7 @@
  *
  * @package MojoToolbox
  * @author Will Wilson <will@mojowill.com>
- * @version 1.2.3
+ * @version 1.3
  * @since 1.0
  */
  
@@ -15,7 +15,7 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 	/**
 	 * mojoToolbox class.
 	 *
-	 * @version 1.2.3
+	 * @version 1.3
 	 * @since 1.0
 	 */
 	class mojoToolbox {
@@ -58,37 +58,37 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			/**
 			 * custom_login_logo action
 			 */
-			add_action( 'login_head', array( &$this, 'custom_login_logo' ), $this->priority );
+			add_action( 'login_head', array( $this, 'custom_login_logo' ), $this->priority );
 			
 			/**
 			 * custom_default_avatar filter
 			 */
-			add_filter( 'avatar_defaults', array( &$this, 'custom_default_avatar' ), $this->priority );
+			add_filter( 'avatar_defaults', array( $this, 'custom_default_avatar' ), $this->priority );
 			
 			/**
 			 * remove_dashboard_widgets action
 			 */
-			add_action( 'wp_dashboard_setup', array( &$this, 'remove_dashboard_widgets' ), $this->priority );
+			add_action( 'wp_dashboard_setup', array( $this, 'remove_dashboard_widgets' ), $this->priority );
 			
 			/**
 			 * remove_editor_menu action
 			 */
-			add_action( '_admin_menu', array( &$this, 'remove_editor_menu'), 1 );
+			add_action( '_admin_menu', array( $this, 'remove_editor_menu'), 1 );
 			
 			/**
 			 * custom_admin_footer filter
 			 */
-			add_filter( 'admin_footer_text', array( &$this, 'custom_admin_footer' ), $this->priority );
+			add_filter( 'admin_footer_text', array( $this, 'custom_admin_footer' ), $this->priority );
 			
 			/**
 			 * custom_login_url filter
 			 */
-			add_filter( 'login_headerurl', array( &$this, 'custom_login_url' ), $this->priority );
+			add_filter( 'login_headerurl', array( $this, 'custom_login_url' ), $this->priority );
 			
 			/**
 			 * custom_login_description filter
 			 */
-			add_filter( 'login_headertitle', array( &$this, 'custom_login_description' ), $this->priority );
+			add_filter( 'login_headertitle', array( $this, 'custom_login_description' ), $this->priority );
 			
 			/**
 			 * Hide Wordpress Generator Tag
@@ -100,12 +100,17 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 			/**
 			 * custom_email_address filter
 			 */
-			add_filter( 'wp_mail_from', array( &$this, 'custom_email_address' ), $this->priority );
+			add_filter( 'wp_mail_from', array( $this, 'custom_email_address' ), $this->priority );
 			
 			/**
 			 * custom_email_from_name filter
 			 */
-			add_filter( 'wp_mail_from_name', array( &$this, 'custom_email_from_name' ), $this->priority );
+			add_filter( 'wp_mail_from_name', array( $this, 'custom_email_from_name' ), $this->priority );
+
+			/**
+			 * remove Windows Live writer
+			 */
+			add_action( 'init', array( $this, 'remove_livewriter' ), $this->priority );
 			 
 		}
 		
@@ -272,6 +277,19 @@ if ( ! class_exists( 'mojoToolbox' ) ) :
 		function custom_email_from_name( $old ) {
 			if ( isset( $this->options['email_from'] ) && $this->options['email_from'] != '' ) :
 				return $this->options['email_from'];
+			endif;
+		}
+
+		/**
+		 * remove windows livewriter links in the head
+		 * 
+		 * @return void
+		 * @since 1.3 
+		 */
+		function remove_livewriter() {
+			if ( isset( $this->options['byebye_livewriter'] ) && $this->options['byebye_livewriter'] == 1 ) :
+				remove_action( 'wp_head', 'rsd_link' );
+				remove_action( 'wp_head', 'wlwmanifest_link' );
 			endif;
 		}
 				

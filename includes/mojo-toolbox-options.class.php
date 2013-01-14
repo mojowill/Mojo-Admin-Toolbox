@@ -4,7 +4,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 	/**
 	 * mojoToolboxOptions class.
 	 *
-	 * @version 1.2.4
+	 * @version 1.3
 	 * @since 1.0
 	 * @todo add media upload support for images.
 	 * @extends mojoToolbox
@@ -34,7 +34,6 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 			
 			if ( isset( $_GET['page']) && $_GET['page'] == 'mojoToolbox-options' ) :
 				add_action( 'admin_print_scripts', array( &$this, 'admin_scripts' ) );
-				add_action( 'admin_print_styles', array( &$this, 'admin_styles' ) );
 			endif;
 		}
 		
@@ -106,24 +105,14 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 		 * @since 1.2
 		 */
 		function admin_scripts() {
-			wp_enqueue_script( 'media-upload' );
-			wp_enqueue_script( 'thickbox' );
-			wp_register_script( 'mojo-toolbox', MOJO_BASE_URL . 'js/mojo-toolbox.js', array( 'jquery', 'media-upload', 'thickbox' ) );
+			//wp_enqueue_script( 'media-upload' );
+			//wp_enqueue_script( 'thickbox' );
 			
+			wp_enqueue_media();
+
+			wp_register_script( 'mojo-toolbox', MOJO_BASE_URL . 'js/mojo-toolbox.js', array( 'jquery' ) );
+	
 			wp_enqueue_script( 'mojo-toolbox' );
-		}
-		
-		/**
-		 * admin_styles function.
-		 * 
-		 * Adds the css for the thickbox
-		 * @access public
-		 * @return void
-		 * @since 1.2
-		 */
-		function admin_styles() {
-			wp_enqueue_style( 'thickbox' );
-			
 		}
 				
 		/**
@@ -186,6 +175,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 								<label><input name="mojoToolbox_options[remove_comments]" type="checkbox" value="1" <?php if ( isset( $this->options['remove_comments'] ) ) { checked( '1', $this->options['remove_comments'] ); } ?> /> <?php echo _e( 'Hide the comments system.', 'mojo-toolbox' );?></label><br />
 								<label><input name="mojoToolbox_options[remove_editor]" type="checkbox" value="1" <?php if ( isset( $this->options['remove_editor'] ) ) { checked( '1', $this->options['remove_editor'] ); } ?> /> <?php echo _e( 'Hide the theme editor screen.', 'mojo-toolbox' );?></label><br />
 								<label><input name="mojoToolbox_options[hide_wp]" type="checkbox" value="1" <?php if ( isset( $this->options['hide_wp'] ) ) { checked( '1', $this->options['hide_wp'] ); } ?> /> <?php echo _e( 'Hide the Wordpress Meta Generator tag.', 'mojo-toolbox' );?></label><br />
+								<label><input name="mojoToolbox_options[byebye_livewriter]" type="checkbox" value="1" <?php if ( isset( $this->options['byebye_livewriter'] ) ) { checked( '1', $this->options['byebye_livewriter'] ); } ?> /><?php echo _e( 'Remove Windows Livewriter Links in the document head.', 'mojo-toolbox' );?></label><br />
 								<label><input name="mojoToolbox_options[override_theme]" type="checkbox" value="1" <?php if ( isset( $this->options['override_theme'] ) ) { checked( '1', $this->options['override_theme'] ); } ?> /><span style="color:red;margin-left:2px;"><?php echo _e( 'Override theme, this will make sure what you set in here overrides any similar functions or filters in your theme.', 'mojo-toolbox' );?></span></label><br />
 							</td>
 						</tr>
@@ -206,7 +196,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 						<tr>	
 							<th scope="row"><?php echo _e( 'Custom Login Logo URL', 'mojo-toolbox' );?></th>
 							<td>
-								<label><input name="mojoToolbox_options[login_logo]" type="text" value="<?php if ( isset( $this->options['login_logo'] ) ) echo $this->options['login_logo'];?>"/><input class="upload_image_button" type="button" value="<?php echo _e( 'Upload Image', 'mojo-toolbox' );?>" /><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom login page logo, (270px x 60px works well!)', 'mojo-toolbox' );?></span></label>
+								<label><input name="mojoToolbox_options[login_logo]" type="text" value="<?php if ( isset( $this->options['login_logo'] ) ) echo $this->options['login_logo'];?>"/><input class="mojo-open-media button" type="button" value="<?php echo _e( 'Upload Image', 'mojo-toolbox' );?>" /><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom login page logo, (270px x 60px works well!)', 'mojo-toolbox' );?></span></label>
 							</td>
 						</tr>
 
@@ -230,7 +220,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 						<tr>
 							<th scope="row"><?php echo _e( 'Custom Avatar', 'mojo-toolbox' );?></th>
 							<td>
-								<label><input name="mojoToolbox_options[avatar_image]" type="text" value="<?php if ( isset( $this->options['avatar_image'] ) ) echo $this->options['avatar_image'];?>"/><input class="upload_image_button" type="button" value="<?php echo _e( 'Upload Image', 'mojo-toolbox' );?>" /><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom avatar, (70px x 70px!)', 'mojo-toolbox' );?></span></label>
+								<label><input name="mojoToolbox_options[avatar_image]" type="text" value="<?php if ( isset( $this->options['avatar_image'] ) ) echo $this->options['avatar_image'];?>"/><input class="mojo-open-media button" type="button" value="<?php echo _e( 'Upload Image', 'mojo-toolbox' );?>" /><span style="color:#666666;margin-left:2px;"><?php echo _e( 'The URL for your custom avatar, (70px x 70px!)', 'mojo-toolbox' );?></span></label>
 							</td>
 						</tr>
 						
