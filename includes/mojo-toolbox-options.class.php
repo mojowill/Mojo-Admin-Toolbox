@@ -4,9 +4,8 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 	/**
 	 * mojoToolboxOptions class.
 	 *
-	 * @version 1.3
+	 * @version 1.3.1
 	 * @since 1.0
-	 * @todo add media upload support for images.
 	 * @extends mojoToolbox
 	 */
 	class mojoToolboxOptions {
@@ -26,11 +25,11 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 			
 			$this->options = get_option( 'mojoToolbox_options' );
 			
-			register_activation_hook( __FILE__, array( &$this, 'add_defaults' ) );
-			register_uninstall_hook( __FILE__, array( &$mojoToolboxOptions, 'delete_plugin_options' ) );
+			register_activation_hook( __FILE__, array( $this, 'add_defaults' ) );
+			register_uninstall_hook( __FILE__, array( $mojoToolboxOptions, 'delete_plugin_options' ) );
 			
-			add_action( 'admin_init', array( &$this, 'options_init' ) );
-			add_action( 'admin_menu', array( &$this, 'add_options_page' ) );
+			add_action( 'admin_init', array( $this, 'options_init' ) );
+			add_action( 'admin_menu', array( $this, 'add_options_page' ) );
 			
 			if ( isset( $_GET['page']) && $_GET['page'] == 'mojoToolbox-options' ) :
 				add_action( 'admin_print_scripts', array( &$this, 'admin_scripts' ) );
@@ -82,7 +81,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 		 * @since 1.0
 		 */
 		function options_init() {
-			register_setting( 'mojoToolbox_plugin_options', 'mojoToolbox_options', array( &$this, 'validate_options' ) );		
+			register_setting( 'mojoToolbox_plugin_options', 'mojoToolbox_options', array( $this, 'validate_options' ) );		
 		}
 		
 		/**

@@ -2,15 +2,15 @@
 Contributors: mojowill
 Donate link: http://www.mojowill.com/
 Tags: admin, tools
-Requires at least: 3.2
-Tested up to: 3.3.1
+Requires at least: 3.5
+Tested up to: 3.5
 Stable tag: trunk
 
 A small toolbox of functions for customising the admin dashboard, useful for hiding stuff from clients!
 
 == Description ==
 
-The Mojo Admin Toolbox is a collection of little functions I found myself using a lot to customise the admin dashboard of Wordpress, specifically when I was hiding stuff from a client or customising it for them!
+The Mojo Admin Toolbox is a collection of little functions I found myself using a lot to customise the admin dashboard of Wordpress, specifically when I was hiding stuff from a client or customising it for them! The latest version (1.3+) REQUIRES WordPress 3.5+.
 
 = Features =
 * Remove/Hide the Wordpress Comments system, never confuse your client again!
@@ -59,6 +59,10 @@ Check out the Other Notes section for more info.
 1. A simple to use options page.
 
 == Changelog ==
+
+=1.3.1=
+* Updating a few bits of code I missed in 1.3.
+* Updating readme.txt so show tested and working with WordPress 3.4.
 
 =1.3=
 * Updated to work with the new WordPress Media Manager introduced in 3.5.
