@@ -26,7 +26,7 @@ if ( ! class_exists( 'mojoToolboxOptions' ) ) :
 			$this->options = get_option( 'mojoToolbox_options' );
 			
 			register_activation_hook( __FILE__, array( $this, 'add_defaults' ) );
-			register_uninstall_hook( __FILE__, array( $mojoToolboxOptions, 'delete_plugin_options' ) );
+			register_uninstall_hook( __FILE__, array( __CLASS__, 'delete_plugin_options' ) );
 			
 			add_action( 'admin_init', array( $this, 'options_init' ) );
 			add_action( 'admin_menu', array( $this, 'add_options_page' ) );
