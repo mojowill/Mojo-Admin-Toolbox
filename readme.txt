@@ -60,16 +60,16 @@ Check out the Other Notes section for more info.
 
 == Changelog ==
 
-=1.3.1=
+= 1.3.1 =
 * Updating a few bits of code I missed in 1.3.
 * Updating readme.txt so show tested and working with WordPress 3.4.
 
-=1.3=
+= 1.3 =
 * Updated to work with the new WordPress Media Manager introduced in 3.5.
 * Adding option to remove Windows Livewriter links from the document head.
 * Minor tidy ups to code.
 
-=1.2.4 =
+= 1.2.4 =
 * Long overdue fix for Login Screen after WordPress 3.4.
 * Fixing text validation of footer text to allow links.
 
