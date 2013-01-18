@@ -60,6 +60,9 @@ Check out the Other Notes section for more info.
 
 == Changelog ==
 
+= 1.3.2 =
+* A few more missed fixes after the last release.
+
 = 1.3.1 =
 * Updating a few bits of code I missed in 1.3.
 * Updating readme.txt so show tested and working with WordPress 3.4.
