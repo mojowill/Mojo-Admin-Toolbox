@@ -3,7 +3,7 @@ Contributors: mojowill
 Donate link: http://www.mojowill.com/
 Tags: admin, tools
 Requires at least: 3.5
-Tested up to: 3.5
+Tested up to: 4.2
 Stable tag: trunk
 
 A small toolbox of functions for customising the admin dashboard, useful for hiding stuff from clients!
